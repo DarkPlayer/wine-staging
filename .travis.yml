@@ -5,8 +5,6 @@ cache: apt
 
 before_install:
     - sudo apt-get update -qq
-    - "export DISPLAY=:99.0"
-    - "sh -e /etc/init.d/xvfb start"
 
 install:
     - sudo apt-get remove oracle-java7-installer oracle-java8-installer
