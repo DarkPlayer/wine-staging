@@ -5,6 +5,7 @@ cache: apt
 
 before_install:
     - sudo apt-get update -qq
+    - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x24
 
 install:
     - sudo apt-get remove oracle-java7-installer oracle-java8-installer
@@ -26,4 +27,4 @@ before_script:
     - make -j 2
 
 script:
-    - make test
+    - DISPLAY=:99 make test
